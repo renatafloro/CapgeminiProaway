@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="">
+    <meta name="viewport" content="width=device-width">
+    <title>Primeira aula de HTML</title>
+  </head>
+  
+  <body>
+      <div>
+          <input type="text" id="nome" placeholder="Informe um nome" />
+          <input type="text" id="sobrenome" placeholder="Informe um sobrenome" />
+          <input type="number" id="idade" placeholder="">
+          <hr/>
+         <button onclick="ola()">Enviar</button>
+         <label id="nomeCompleto"></label>
+     
+        </div>
+      
+      <script>
+          function enviar(){
+              var nome = document.getElementById("nome")
+              if(nome.value ==""){
+                document.getElementById("nomeCompleto").innerHTML ="Informe nome"; 
+                nome.focus();
+                return;
+              }
+              var sobewnome = document.getElementById("sobrenome")
+              if(sobrenome==""){
+                document.getElementById("nomeCompleto").innerHTML ="Informe sobrenome"; 
+                document.getElementById("sobrenome").focus();
+                return;
+              }
+
+              var idade= document.getElementById("idade".value;
+              var msg = nome.value+" "+sobrenome+ "você tem " + idade +",Portanto você é maior de idade";
+              if(idade<18){
+                  msg=nome.value+ " "+ sobrenome+ "você tem "+idade +", Portanto você menor de idade";
+              }
+              //console.log(nome)
+              document.getElementById("nomeCompleto").innerHTML = msg;
+          }
+      </script>
+   </body>
+
+</html>

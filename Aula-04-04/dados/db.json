@@ -1,0 +1,15 @@
+{
+    "contatos":[{
+        "id":1,
+        "nome": "Maria",
+        "fone":9867594,
+        "email":"maria@email.com"
+    },
+    {
+        "id":1,
+        "nome": "João",
+        "fone":9867594,
+        "email":"joao@email.com"
+    }
+] 
+}

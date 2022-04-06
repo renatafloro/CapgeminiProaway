@@ -1,0 +1,22 @@
+{
+    "categorias": [
+        {
+            "id": 1,
+            "descricao": "Pó"
+        },
+        {
+            "id": 2,
+            "descricao": "Grãos"
+        },
+        {
+            "id": 3,
+            "descricao": "Capsulas"
+        },
+        {
+            "id": 4,
+            "descricao": "Mix"
+        }
+    ],
+    "produtos": []
+
+}

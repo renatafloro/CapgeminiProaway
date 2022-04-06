@@ -1,0 +1,21 @@
+body{
+    margin: 20px;
+}
+a {
+    background-color: blueviolet;
+    color: white;
+    padding: 5px 10px 5px 10px;
+    text-decoration: none;
+    border-top-left-radius: 5px;
+    margin: 5px;
+}
+a:hover {
+    background-color: blueviolet;
+    color: antiquewhite;
+    border: 2px solid black;
+}
+.comtainer {
+    margin-top: 0px;
+    background-color:blue;
+    padding: 20px;
+}

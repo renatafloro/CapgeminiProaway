@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+     <link rel="stylesheet" href="css/style.css">
+</head>
+
+    <body>
+        <main>
+            <iframe src="index.html" name="central" width="100%" height=""></iframe>
+        </main> 
+        <div class="container">
+            <h1>Cadastre seus dados</h1>
+            <form action="#" method="POST">
+                <div class="big-box">
+                    <label>Email:</label>
+                    <input type="email" id="email" placeholder="Informe email"/>
+                </div>
+                <div class="small-box">
+                    <label for="name">Nome:</label>
+                    <input type="text" id="nome" placeholder="Digite seu nome"/>
+                </div>               
+                <div class="small-box">
+                    <label for="idade">Idade:</label>
+                    <input type="number" id="fidade" placeholder="Informe idade" min="0" max="100" />
+                </div>
+                <div class="big-box">
+                    <label for="credito">Limite de crédito:</label>
+                    <input type="number" id="credito" placeholder="Digite o limite de crédito"/>
+                </div>
+                <div class="big-box">
+                    <label for="imagem">Imagem:</label>
+                    <input type="file" id="imagem" placeholder="Insira uma imagem"/>
+                </div>
+                <div class="big-box">
+                    <label for="rua">Rua:</label>
+                    <input type="text" id="rua" placeholder="Digite a rua"/>
+                </div>
+                <div class="small-box">
+                    <label for="cidade">Cidade:</label>
+                    <input type="text" id="cidade" placeholder="Digite a cidade"/>
+                </div>
+                <div class="small-box">
+                    <label for="bairro">Bairro:</label>
+                    <input type="text" id="bairro" placeholder="Digite o bairro"/>
+                </div>
+                <div class="small-box">
+                    <label for="cep">CEP:</label>
+                    <input type="text" id="cep" placeholder="Digite o cep"/>
+                </div>
+                
+           </form>  
+
+           <div class="small-box">
+            <input type="submit" id="btn-submit" value="Cadastrar" onclick="onSubmit()">
+            
+           </div>
+          <div class="small-box">
+            <input type="reset" class="btn" value="Cancelar">
+          </div>
+        </div>  
+         
+<script src="js/scripts.js"></script>
+
+</body>
+</html>
