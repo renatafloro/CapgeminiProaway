@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produto</title>
+    <link rel="stylesheet" 
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+</head>
+
+<body onload="loadDados()">
+    <div class="container mb-5">
+        <form action="#" class="was-validated">
+            <h1>Faça sua compra</h1>
+            
+                <label for="iddescricao" class="form-label">Descrição:</label>
+                <input class= "form-control" type="text" id="iddescricao" placeholder="Informe a descrição do produto" required>
+                   <div class="invalid-feedback">
+                       Informe a descrição do produto!
+                   </div>
+                             
+                <label for="idpreco" class="form-label">Preço:</label>
+                <input class= "form-control" type="text" id="idpreco" placeholder="Informe preço" required>
+                   <div class="invalid-feedback">
+                       Informe o preço!
+                    </div>
+
+                <label for="idestoque" class="form-label">Estoque:</label>
+                <input class= "form-control" type="text" id="idestoque" placeholder="Informe estoque" required>
+                    <div class="invalid-feedback">
+                        Informe o estoque!
+                    </div>    
+
+                <!--Dropdown-->
+
+                <label class="form-label" for="idcategoria">Categoria:</label>
+                <select class="form-control select" id="idcategoria" required>    
+                </select>
+                    <div class="invalid-feedback">
+                        Selecione a categoria!
+                    </div>  
+                    
+                    <label class="form-label" for="idfornecedor">Fornecedor:</label>
+                    <select class="form-control select" id="idfornecedor" required>   
+                    </select>
+                        <div class="invalid-feedback">
+                            Selecione o fornecedor!
+                        </div>  
+                    
+         </form>
+         <div class="mt-3">   
+            <button onclick="salvar()" class="btn btn-outline-primary">Salvar</button>
+            <button class="btn btn-outline-danger">Cancelar</button>
+            </div> 
+    </div>
+    
+<!--SCRIPT-->
+    <script>
+
+        
+//Categoria
+    function loadDados(){
+        fetch("http://localhost:3000/categoria")
+        .then(x => x.text())
+        .then(data => {
+            var ret =displaySelect(data)
+            document.getElementById("idcategoria").innerHTML= ret;
+        })
+
+        fetch ("http://localhost:3000/fornecedor")
+         .then(x=> x.text())
+         .then(data =>{
+             var ret =displaySelect(data)
+             document.getElementById("idfornecedor").innerHTML= ret;
+         })
+    }
+
+    function displaySelect(data){
+        let listaJson = JSON.parse(data)
+        var opt= ""
+        for(let indice in listaJson){
+            opt+= "<option>" +listaJson[indice].descricao+ "</option>"
+        }
+        return opt;
+    }
+
+    function salvar(){
+        var produtos = {
+            descricao: document.getElementById("iddescricao").value,
+            preco: document.getElementById("idpreco").value,
+            estoque: document.getElementById("idestoque").value,
+            categoria: document. getElementById("idcategoria").value,
+            fornecedor: document.getElementById("idfornecedor").value
+        }
+        fetch("http://localhost:3000/produtos",{
+            method: "POST",
+            body: JSON.stringify(produtos),
+            headers:{
+                'Content-Type': 'application/json'
+            }
+        })       
+    }
+    </script>
+
+ </body>
+</html>

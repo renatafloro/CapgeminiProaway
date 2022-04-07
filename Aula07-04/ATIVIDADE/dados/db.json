@@ -1,0 +1,56 @@
+{
+  "categoria": [
+    {
+      "id": 1,
+      "descricao": "Pó"
+    },
+    {
+      "id": 2,
+      "descricao": "Grãos"
+    },
+    {
+      "id": 3,
+      "descricao": "Capsulas"
+    },
+    {
+      "id": 4,
+      "descricao": "Mix"
+    }
+  ],
+  "fornecedor": [
+    {
+      "id": 1,
+      "descricao": "Pilão"
+    },
+    {
+      "id": 2,
+      "descricao": "Nescafé"
+    },
+    {
+      "id": 3,
+      "descricao": "Melita"
+    },
+    {
+      "id": 4,
+      "descricao": "Santa Clara"
+    }
+  ],
+  "produtos": [
+    {
+      "descricao": "Café",
+      "preco": "20",
+      "estoque": "2",
+      "categoria": "Grãos",
+      "fornecedor": "Melita",
+      "id": 1
+    },
+    {
+      "descricao": "Café",
+      "preco": "16",
+      "estoque": "14",
+      "categoria": "Pó",
+      "fornecedor": "Pilão",
+      "id": 2
+    }
+  ]
+}
