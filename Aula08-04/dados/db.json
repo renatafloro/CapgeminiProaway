@@ -1,0 +1,10 @@
+{
+    "produtos":[{
+        "id":1,
+        "nome":"Feijão",
+        "descricao":"feijão preto safra 2020",
+        "preco":9.89,
+        "imagem": "./imagem/feijao.png"
+        
+    }]
+}

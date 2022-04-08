@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>  
+    body{
+        background-color: lightcyan;
+
+    }    
+    .calculadora{
+        position: absolute;
+        background-color: pink;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        padding: 15px;    
+        border-radius: 28px;
+        width: 200px;
+    }
+    .botoes{
+        width: 200px;
+        margin-top: 10px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 5px;
+    }
+
+    h1{
+        color: darkmagenta;
+    }
+    input{
+        border-radius: 5px;
+        border-color: aqua;
+        width: 189px;
+        font-size: 20px;
+        text-align: right;
+    }
+    button{
+        width: 40px;
+        height: 40px;
+        margin: 4px;
+        background-color: aqua;
+        border-color: aqua;
+        border-radius: 40px;
+        font-size: 20px;
+        cursor: pointer; 
+    }
+    .resultado{
+        background-color: white;
+        height: 20px;
+    }
+</style>
+<body>
+    <div class="calculadora" >
+        <h1>Calculadora</h1>
+        <input class="resultado" type="text" id="display"/>
+        <div class="botoes">
+            <button onclick="addDigito(this)">0</button>
+            <button onclick="addDigito(this)">1</button>
+            <button onclick="addDigito(this)">2</button>
+            <button onclick="addDigito(this)">3</button>
+            <button onclick="addDigito(this)">4</button>
+            <button onclick="addDigito(this)">5</button>
+            <button onclick="addDigito(this)">6</button>
+            <button onclick="addDigito(this)">7</button>
+            <button onclick="addDigito(this)">8</button>
+            <button onclick="addDigito(this)">9</button>
+            <button onclick="informarOperacao(this)">+</button>
+            <button onclick="informarOperacao(this)">-</button>
+            <button onclick="informarOperacao(this)">*</button>
+            <button onclick="informarOperacao(this)">/</button>
+            <button onclick="calcular()">=</button>
+            <button onclick="limpar()">C</button>
+        </div>
+    </div>
+
+    <script>
+        //var fora da função é global
+        var operacao = ""
+        var n1=""
+
+        function addDigito(dig){
+            var valorDisplay = document.getElementById("display").value
+            document.getElementById("display").value = valorDisplay + dig.innerText;
+        }
+
+        function limpar(dig){
+           document.getElementById("display").value =""
+           document.getElementById("display").focus()
+        }
+        function informarOperacao(op){
+            n1= document.getElementById("display").value
+            document.getElementById("display").value =""
+            operacao = op.innerText
+        }
+
+        function calcular(){
+            //função eval soma a estring
+            var n2=document.getElementById("display").value
+            var resultado = eval(`${n1}${operacao}${n2}`)
+            document.getElementById("display").value= resultado
+        }
+
+
+       
+    </script>
+    
+</body>
+</html>
