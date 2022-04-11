@@ -101,7 +101,7 @@
         }
 
         function calcular(){
-            //função eval soma a estring
+            //função eval faz a operação da string (porém apresenta alguns erros por aceitar qualquer string)
             var n2=document.getElementById("display").value
             var resultado = eval(`${n1}${operacao}${n2}`)
             document.getElementById("display").value= resultado

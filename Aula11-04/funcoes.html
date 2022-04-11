@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" placeholder="Informe numero"/>
+    <input type="numbwe" placeholder="informe numero"/>
+    <button onclick="onCalcular()">Mostrar no paragrafo</button>
+    <button onclick="onCalcular2()">Mostrar no alerr</button>
+
+    <script>
+        function onCalcular(){
+            var n1= parseInt(document.getElementsByTagName("input")[0].value)
+            var n2= parseInt(document.getElementsByTagName("input")[1].value)
+            calcular (n1, n2, mostraEmParagrafo)
+
+        }
+
+        function onCalcular2(){
+            calcular(50, 100, mostraComoAlert)
+        }
+        function calcular(n1, n2, mostraEmParagrafo){
+            let x= n1+n2
+            mostraEmParagrafo(x)
+        }
+        function mostraEmParagrafo(valor){
+
+        }
+    </script>
+</body>
+</html>
