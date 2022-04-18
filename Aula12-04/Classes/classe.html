@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classes</title>
+</head>
+<body>
+    <label></label>
+    <script>
+        class Pessoa{
+            //metodo
+            constructor (codigo, nome, idade, fone){
+                this.codigo = codigo
+                this.nome = nome
+                this.idade = idade
+                this.fone = fone
+            }
+        }
+        let p1 = new Pessoa(10, 'José da Silva', 50, "12345678");
+        let p2 = new Pessoa(12, 'Maria da Silva', 20, "12345678");
+
+        var p3={
+            codigo: 13,
+            nome: 'Zezinho',
+            idade: 18,
+            fone: 123
+        }
+        var pessoas = [
+            p1,
+            p2,
+            p3
+        ]
+
+        for(let i in pessoas){
+            document.getElementsByTagName("label")[0].innerHTML+=pessoas[i].nome
+
+        }
+    </script>
+</body>
+</html>

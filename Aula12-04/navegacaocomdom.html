@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="ver()">Ver</button>
+    <div>
+        <p>quKDED</p>
+        <ol>
+            <li>um</li>
+            <li>dois</li>
+            <li>três</li>
+            <li>
+                <ol id="listaInterna">
+
+                </ol>
+            </li>
+        </ol>      
+        <ul>
+            <li>um</li>
+            <li>dois</li>
+            <li>três</li>
+        </ul>
+    </div>
+    <label></label>
+
+    <script>
+        function ver(){
+            var lista= document.getElementsByTagName("div")[0]
+            document.getElementsByTagName("label")[0].innerHTML = lista.children[0].children[2].innerHTML
+        }
+    </script>
+</body>
+</html>
