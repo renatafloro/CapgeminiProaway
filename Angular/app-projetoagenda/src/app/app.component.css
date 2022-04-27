@@ -1,0 +1,19 @@
+nav {
+    background-color: lightslategray;
+    padding: 10px;
+}
+
+nav a {
+    text-decoration: none;
+    margin-right: 10px;
+    background-color: purple;
+    padding: 5px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    color: white
+}
+
+nav a:hover {
+    background-color: lavender;
+    color: purple
+}
