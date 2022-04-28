@@ -2,8 +2,9 @@
   <a routerLink=""><i class="align-middle material-icons">home</i></a>
   <a *ngIf="userLogado.perfil== 'ADM'" class="m-2 btn btn-outline-light" routerLink="cadastroproduto">Produto</a>
   <a *ngIf="userLogado.perfil=='ADM' || userLogado.perfil=='USER'"  class="m-2 btn btn-outline-light" routerLink="carrinho">Carrinho</a>
-  <a class="m-2 btn btn-outline-light" routerLink="login">Login</a>
-  <label>Olá, {{userLogado.nome}}</label>
+  <a *ngIf="!userLogado.email" class="m-2 btn btn-outline-light" routerLink="login">Login</a>
+  <a *ngIf="userLogado.email" class="m-2 btn btn-outline-light" (click)="logout()">Log out</a>
+  <label *ngIf="!userLogado.email">{{userLogado.nome}}</label>
 </nav>
 
 <router-outlet></router-outlet>

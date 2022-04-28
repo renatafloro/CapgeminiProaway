@@ -19,9 +19,9 @@
       "id": 8
     },
     {
-      "descricao": "",
-      "preco": "",
-      "estoque": "",
+      "descricao": "Leite em pó",
+      "preco": 12,
+      "estoque": 80,
       "id": 9
     }
   ],

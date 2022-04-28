@@ -21,4 +21,9 @@ export class AppComponent {
   constructor() {
     this.pegarPerfilUsuarioConectado();
   }
+
+  logout(){
+    localStorage.removeItem("userConectado")
+    window.location.reload()
+  }
 }

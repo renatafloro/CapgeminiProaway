@@ -4,21 +4,25 @@
         <h1 class="text-center mb-4 mt-4">Cadastre seu produto</h1>
 
         <form #f="ngForm" (ngSubmit)="gravar(f.value)">
-          <input class="form-control" type="text" #fNome="ngModel" ngModel name="descricao" placeholder="Produto" />
+          <input required minlength="5" class="form-control" type="text" #fNome="ngModel" ngModel name="descricao" placeholder="Produto" />
           <div *ngIf="fNome.invalid" class="ng-invalid">
-            Campo obrigatorio
+            Informe a descrição do produto
           </div>
           <br />
-          <input class="form-control"type="number" ngModel name="preco" placeholder="Preço"/>
+
+          <input required class="form-control"type="number" #fpreco="ngModel" ngModel name="preco" placeholder="Preço"/>
+          <div *ngIf="fpreco.invalid" class="ng-invalid">
+            Informe o preço do produto
+          </div>
           <br />
-          <input class="form-control"type="number" ngModel name="estoque" placeholder="Estoque"/>
+          <input required class="form-control"type="number" #festoque="ngModel" ngModel name="estoque" placeholder="Estoque"/>
+          <div *ngIf="festoque.invalid" class="ng-invalid">
+            Informe o estoque do produto
+          </div>
           <br />
           <button [disabled]="f.invalid" class="btn btn-secondary">Salvar</button>
-          <button (click)="limparMsg()" type="reset" class="btn btn-danger">Cancelar</button>
+          <button type="reset" class="btn btn-danger">Cancelar</button>
         </form>
-        <label>{{ msg }}</label>
-        <label>{{ f.valid }}</label>
-
 
         <table class="table">
           <thead class="bg-secondary">
