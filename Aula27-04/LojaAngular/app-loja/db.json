@@ -1,0 +1,27 @@
+{
+  "produtos": [
+    {
+      "descricao": "Café",
+      "preco": 12,
+      "estoque": 25,
+      "id": 4
+    }
+  ],
+  "usuario": [
+    {
+      "id": 1,
+      "nome": "Ana Silva",
+      "email": "ana@email.com",
+      "senha": "123",
+      "perfil": "ADM"
+    },
+    {
+      "id": 2,
+      "nome": "Paulo",
+      "email": "paulo@email.com",
+      "senha": "123",
+      "perfil": "USER"
+    }
+  ],
+  "carrinho": []
+}

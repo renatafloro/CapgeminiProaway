@@ -1,0 +1,44 @@
+<div class="row d-flex justify-content-center">
+    <div class="col-md-6 d-flex justify-content-center align-items-center">
+      <div class="col-md-6">
+        <h1 class="text-center mb-4 mt-4">Cadastre seu produto</h1>
+
+        <form #f="ngForm" (ngSubmit)="gravar(f.value)">
+          <input class="form-control" type="text" ngModel name="descricao" placeholder="Produto" />
+          <br />
+          <input class="form-control"type="number" ngModel name="preco" placeholder="Preço"/>
+          <br />
+          <input class="form-control"type="number" ngModel name="estoque" placeholder="Estoque"/>
+          <br />
+          <button class="btn btn-secondary">Salvar</button>
+          <button (click)="limparMsg()" type="reset" class="btn btn-danger">Cancelar</button>
+        </form>
+        <label>{{ msg }}</label>
+
+
+        <table class="table">
+          <thead class="bg-secondary">
+            <tr>
+              <th>Id</th>
+              <th>Descrição</th>
+              <th>Preço</th>
+              <th>Estoque</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let prod of produtos">
+              <td>{{ prod.id }}</td>
+              <td> {{ prod.descricao }}</td>
+              <td> {{ prod.preco }}</td>
+              <td> {{ prod.estoque }}</td>
+              <td> <a [routerLink]="['/produtos',prod.id]"><i class="material-icons">mode_edit</i></a></td>
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <router-outlet></router-outlet>

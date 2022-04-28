@@ -1,0 +1,20 @@
+<div class="row d-flex justify-content-center">
+  <div class="col-md-6 d-flex justify-content-center align-items-center">
+    <div class="col-md-6">
+      <h1 class="text-center mb-4">Faça seu login!</h1>
+      <form #f="ngForm" (ngSubmit)="fazerLogin(f.value)">
+        <input class="form-control" type="text" ngModel name="email" placeholder="Informe usuário" />
+        <br />
+        <input class="form-control" type="password" ngModel name="senha" placeholder="Informe a senha"/>
+        <br />
+        <button class="btn btn-secondary">Login</button>
+      </form>
+      <p class="text-center">
+        Ainda não tem uma conta?
+        <a routerLink="/cadastrousuario"> Cadastre-se</a>
+      </p>
+      <p>{{ usuarioConectado.perfil }}</p>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>

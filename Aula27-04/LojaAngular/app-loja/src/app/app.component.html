@@ -1,0 +1,8 @@
+<nav class="container-fluid bg-secondary p-2">
+  <a routerLink=""><i class="align-middle material-icons">home</i></a>
+  <a *ngIf="userLogado.perfil== 'ADM'" class="m-2 btn btn-outline-light" routerLink="cadastroproduto">Produto</a>
+  <a *ngIf="userLogado.perfil=='ADM' || userLogado.perfil=='USUARIO'"  class="m-2 btn btn-outline-light" routerLink="carrinho">Carrinho</a>
+  <a class="m-2 btn btn-outline-light" routerLink="login">Login</a>
+</nav>
+
+<router-outlet></router-outlet>
