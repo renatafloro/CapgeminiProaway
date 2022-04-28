@@ -1,7 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { ConsultaProdutoComponent } from './consulta-produto/consulta-produto.component';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +21,14 @@ export class ProdutoService {
   getOne(idproduto: number){
     return this.http.get (`http://localhost:3000/produtos/${idproduto}`)
   }
-  //criar método atualizar
-
+  
+  update(dados: any){
+    let url = (`http://localhost:3000/produtos/${dados.id}`)
+    return this.http.put(url, dados)
+  }
+  
+  excluir(idproduto: number){
+    return this.http.delete(`http://localhost:3000/produtos/${idproduto}`)
+  }
   }
 

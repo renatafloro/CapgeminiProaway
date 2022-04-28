@@ -12,7 +12,8 @@ export class EditaProdutoComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private router: Router,
               private serviceProduto: ProdutoService) { }
-        produto: any;
+        produto: any= {};
+        msg: string = "";
 
   ngOnInit(): void {
     let routeParams = this.route.snapshot.paramMap;
@@ -20,12 +21,10 @@ export class EditaProdutoComponent implements OnInit {
     this.serviceProduto.getOne(idproduto).subscribe(x=> this.produto = x)
   }
 
-  /*atualizar(): void{
-    this.serviceProduto.atualizar(this.produto).subscribe(() => {
-      this.serviceProduto.mensagem('Produto atualizado')
-      this.router.navigate(["/cadastroproduto"]);
+  atualizar(): void{
+    this.serviceProduto.update(this.produto).subscribe( x => this.msg= "Atualizado com sucesso!")
+          this.router.navigate(["/cadastroproduto"]);
+    }
+  }
 
-    })
-  }*/
 
-}

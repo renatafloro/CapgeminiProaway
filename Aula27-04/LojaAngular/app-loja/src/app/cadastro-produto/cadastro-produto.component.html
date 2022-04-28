@@ -4,16 +4,20 @@
         <h1 class="text-center mb-4 mt-4">Cadastre seu produto</h1>
 
         <form #f="ngForm" (ngSubmit)="gravar(f.value)">
-          <input class="form-control" type="text" ngModel name="descricao" placeholder="Produto" />
+          <input class="form-control" type="text" #fNome="ngModel" ngModel name="descricao" placeholder="Produto" />
+          <div *ngIf="fNome.invalid" class="ng-invalid">
+            Campo obrigatorio
+          </div>
           <br />
           <input class="form-control"type="number" ngModel name="preco" placeholder="Preço"/>
           <br />
           <input class="form-control"type="number" ngModel name="estoque" placeholder="Estoque"/>
           <br />
-          <button class="btn btn-secondary">Salvar</button>
+          <button [disabled]="f.invalid" class="btn btn-secondary">Salvar</button>
           <button (click)="limparMsg()" type="reset" class="btn btn-danger">Cancelar</button>
         </form>
         <label>{{ msg }}</label>
+        <label>{{ f.valid }}</label>
 
 
         <table class="table">
@@ -23,7 +27,8 @@
               <th>Descrição</th>
               <th>Preço</th>
               <th>Estoque</th>
-              <th>Ações</th>
+              <th>Editar</th>
+              <th>Excluir</th>
             </tr>
           </thead>
 
@@ -34,7 +39,8 @@
               <td> {{ prod.preco }}</td>
               <td> {{ prod.estoque }}</td>
               <td> <a [routerLink]="['/produtos',prod.id]"><i class="material-icons">mode_edit</i></a></td>
-
+              <td> <i class="material-icons" (click)="excluir(prod.id)">delete</i></td>
+              
             </tr>
           </tbody>
         </table>

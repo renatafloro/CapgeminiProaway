@@ -1,10 +1,28 @@
 {
   "produtos": [
     {
+      "descricao": "Arroz Branco",
+      "preco": 8,
+      "estoque": 18,
+      "id": 6
+    },
+    {
       "descricao": "Café",
-      "preco": 12,
-      "estoque": 25,
-      "id": 4
+      "preco": 5,
+      "estoque": 45,
+      "id": 7
+    },
+    {
+      "descricao": "Feijão",
+      "preco": 8,
+      "estoque": 52,
+      "id": 8
+    },
+    {
+      "descricao": "",
+      "preco": "",
+      "estoque": "",
+      "id": 9
     }
   ],
   "usuario": [
