@@ -1,0 +1,8 @@
+ Cria as variáveis de ambiente
+
+{
+    "env":{
+        "PORT":"8081",
+        "JWTKEY": "segredo"
+    }
+}

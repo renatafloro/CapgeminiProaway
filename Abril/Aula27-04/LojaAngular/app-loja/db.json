@@ -23,6 +23,12 @@
       "preco": 12,
       "estoque": 80,
       "id": 9
+    },
+    {
+      "descricao": "Leite em pó",
+      "preco": 12,
+      "estoque": 80,
+      "id": 10
     }
   ],
   "usuario": [
