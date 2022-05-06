@@ -1,5 +1,7 @@
 const express = require('express');
-const app = express()
+const app = express();
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 app.use(express.urlencoded({
     extended: false
@@ -7,7 +9,7 @@ app.use(express.urlencoded({
 app.use(express.json());
 
 var pg = require('pg');
-var conString = 'postgres://iiauihesfwexgu:b535a9e7ed39759466b9a12ec740c38b31762d8f243ad3f155831280c3fb4923@ec2-54-158-247-210.compute-1.amazonaws.com:5432/ddtrmoq12th42h'
+var conString = "postgres://iiauihesfwexgu:b535a9e7ed39759466b9a12ec740c38b31762d8f243ad3f155831280c3fb4923@ec2-54-158-247-210.compute-1.amazonaws.com:5432/ddtrmoq12th42h"
 
 const pool = new pg.Pool({
     connectionString: conString,
@@ -45,7 +47,7 @@ app.get('/criartabelausuario', (req, res) => {
 app.post('/usuarios', (req, res) => {
     pool.connect((err, client) => {
         if (err) {
-            return res.status(401).send("Conexão não autorizada")
+            return res.status(401).send("Conexão não autorizada aqui")
         }
         client.query('select * from usuarios where email = $1', [req.body.email], (error, result) => {
             if (error) {
@@ -55,15 +57,22 @@ app.post('/usuarios', (req, res) => {
             if (result.rowCount > 0) {
                 return res.status(200).send('Registro já existe')
             }
-
-            var sql = 'insert into usuarios(email, senha, perfil) values ($1, $2, $3)'
-            client.query(sql, [req.body.email, req.body.senha, req.body.perfil], (error, result) => {
+            bcrypt.hash(req.body.senha, 10, (error, hash) => {
                 if (error) {
-                    return res.status(403).send('Operação não permitida')
+                    return res.status(500).send({
+                        message: 'Erro de autenticação',
+                        erro: error.message
+                    })
                 }
-                res.status(201).send({
-                    mensagem: 'criado com sucesso',
-                    status: 201
+                var sql = 'insert into usuarios(email, senha, perfil) values ($1, $2, $3)'
+                client.query(sql, [req.body.email, hash, req.body.perfil], (error, result) => {
+                    if (error) {
+                        return res.status(403).send('Operação não permitida')
+                    }
+                    res.status(201).send({
+                        mensagem: 'criado com sucesso',
+                        status: 201
+                    })
                 })
             })
         })
@@ -84,17 +93,43 @@ app.get('/usuarios', (req, res) => {
     })
 })
 
-app.get('/usuarios/:email', (req, res) => {
+app.post('/usuarios/login', (req, res) => {
     //res.status(200).send('buscar usuário')
     pool.connect((err, client) => {
         if (err) {
             return res.status(401).send("Conexão não autorizada")
         }
-        client.query(' select * from usuarios where email = $1', [req.params.email], (error, result) => {
+        client.query(' select * from usuarios where email = $1', [req.body.email], (error, result) => {
             if (error) {
                 return res.status(401).send('operação nao permitida')
             }
-            res.status(200).send(result.rows[0])
+            if (result.rowCount > 0) {
+                //criptografar a senha enviada e comparar com a recuperada
+                bcrypt.compare(req.body.senha, result.rows[0].senha, (error, results) => {
+                    if (error) {
+                        return res.status(401).send({
+                            message: "Falha na autenticação"
+                        })
+                    }
+                    if (results) {
+                        let token = jwt.sign({
+                                email: result.rows[0].email,
+                                perfil: result.rows[0].perfil
+                            },
+                            process.env.JWTKEY, {
+                                expiresIn: '1h'
+                            })
+                        return res.status(200).send({
+                            message: 'Conectado com sucesso',
+                            token: token
+                        })
+                    }
+                })
+            } else {
+                return res.status(200).send({
+                    message: 'usuário não encontrado'
+                })
+            }
         })
     })
 })
@@ -144,4 +179,4 @@ app.put('/usuarios/:email', (req, res) => {
     })
 })
 
-app.listen(8081, () => console.log('Aplicação em execução na url http://localhost:8081'))
+app.listen(process.env.PORT || 8081, () => console.log(' http://localhost:8081'))
