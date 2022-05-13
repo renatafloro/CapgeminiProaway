@@ -2,15 +2,17 @@ const express = require('express');
 const app = express();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const cors = require('cors')
 
 app.use(express.urlencoded({
     extended: false
 }))
 app.use(express.json());
+app.use(cors())
 
 var pg = require('pg');
 var conString = "postgres://iiauihesfwexgu:b535a9e7ed39759466b9a12ec740c38b31762d8f243ad3f155831280c3fb4923@ec2-54-158-247-210.compute-1.amazonaws.com:5432/ddtrmoq12th42h"
-
+const login = require('./middleware/login')
 const pool = new pg.Pool({
     connectionString: conString,
     ssl: {
@@ -177,6 +179,11 @@ app.put('/usuarios/:email', (req, res) => {
                 res.status(200).send('usuario não encontrado')
         })
     })
+})
+
+//rotas de função apenas após logado
+app.post('/produto', login, (req, res) =>{
+    res.status(200).send('Rota de inserção de produto')
 })
 
 app.listen(process.env.PORT || 8081, () => console.log(' http://localhost:8081'))
